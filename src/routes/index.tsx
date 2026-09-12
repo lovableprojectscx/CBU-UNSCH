@@ -82,9 +82,15 @@ export const Route = createFileRoute("/")({
         content:
           "La universidad, nuestra tierra de misión. Células, vigilias, foros y acompañamiento pastoral en la UNSCH.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/" }],
   }),
   component: HomePage,
 });

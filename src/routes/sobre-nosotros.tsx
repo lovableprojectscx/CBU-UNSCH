@@ -18,9 +18,15 @@ export const Route = createFileRoute("/sobre-nosotros")({
         content:
           "Comunidad universitaria de estudiantes cristianos en la UNSCH, afiliados a AGEUP en Ayacucho.",
       },
-      { property: "og:url", content: "/sobre-nosotros" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/sobre-nosotros" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/sobre-nosotros" }],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/sobre-nosotros" }],
   }),
   component: SobreNosotrosPage,
 });

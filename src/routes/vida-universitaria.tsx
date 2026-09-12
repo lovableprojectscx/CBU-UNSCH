@@ -25,9 +25,15 @@ export const Route = createFileRoute("/vida-universitaria")({
         content:
           "Reuniones, talleres, voluntariado y comunidad cristiana estudiantil en la UNSCH.",
       },
-      { property: "og:url", content: "/vida-universitaria" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/vida-universitaria" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/vida-universitaria" }],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/vida-universitaria" }],
   }),
   component: VidaUniversitariaPage,
 });

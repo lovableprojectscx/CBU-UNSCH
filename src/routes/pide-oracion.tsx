@@ -19,9 +19,15 @@ export const Route = createFileRoute("/pide-oracion")({
         content:
           "Comparte tu petición con la comunidad. Puedes escribir de forma anónima o con tu nombre.",
       },
-      { property: "og:url", content: "/pide-oracion" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/pide-oracion" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/pide-oracion" }],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/pide-oracion" }],
   }),
   component: PideOracionPage,
 });

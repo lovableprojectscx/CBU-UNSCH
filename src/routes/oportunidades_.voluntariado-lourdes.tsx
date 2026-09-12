@@ -29,6 +29,30 @@ import voluntariadoImg from "@/assets/voluntariado-cbu.webp";
 import { sendEmail } from "@/lib/email";
 
 export const Route = createFileRoute("/oportunidades_/voluntariado-lourdes")({
+  head: () => ({
+    meta: [
+      { title: "Convocatoria Voluntariado 2026 — I.E. Lourdes | CBU UNSCH" },
+      {
+        name: "description",
+        content:
+          "Convocatoria oficial para 4 Docentes de Nivelación y Acompañamiento Pedagógico en la I.E. Nuestra Señora de Lourdes. Estudiantes de la UNSCH (Serie 200 en adelante).",
+      },
+      { property: "og:title", content: "Convocatoria Voluntariado 2026 — I.E. Lourdes | CBU UNSCH" },
+      {
+        property: "og:description",
+        content:
+          "Programa de Acompañamiento Pedagógico y Nivelación Escolar en Ayacucho. 4 vacantes docentes, régimen quincenal de 09:00 a 11:00 AM.",
+      },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/oportunidades/voluntariado-lourdes" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-lourdes.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-lourdes.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-lourdes.jpg" },
+    ],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/oportunidades/voluntariado-lourdes" }],
+  }),
   component: VoluntariadoLourdesPage,
 });
 

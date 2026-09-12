@@ -33,9 +33,15 @@ export const Route = createFileRoute("/oportunidades")({
         content:
           "Convocatorias abiertas de voluntariado universitario, aprendizaje-servicio y desarrollo profesional en Ayacucho.",
       },
-      { property: "og:url", content: "/oportunidades" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/oportunidades" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/oportunidades" }],
+    links: [{ rel: "canonical", href: "https://cbuunsch.vercel.app/oportunidades" }],
   }),
   component: OportunidadesPage,
 });

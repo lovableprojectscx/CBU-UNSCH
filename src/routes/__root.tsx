@@ -86,6 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "CBU UNSCH" },
+      { property: "og:url", content: "https://cbuunsch.vercel.app/" },
+      { property: "og:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://cbuunsch.vercel.app/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Comunidad Bíblica Universitaria — CBU UNSCH Ayacucho" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "CBU UNSCH — Comunidad Bíblica Universitaria" },
       {
@@ -93,6 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Estudiantes cristianos de la Universidad Nacional de San Cristóbal de Huamanga viviendo y compartiendo su fe en Ayacucho.",
       },
+      { name: "twitter:image", content: "https://cbuunsch.vercel.app/og-image.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

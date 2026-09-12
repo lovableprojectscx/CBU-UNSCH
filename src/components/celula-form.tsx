@@ -9,7 +9,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 const schema = z.object({
   nombre: z.string().min(2, "Ingresa tu nombre completo"),
   facultad: z.string().min(2, "Ingresa tu facultad o escuela"),
-  ciclo: z.string().min(1, "Indica tu ciclo actual"),
+  serie: z.string().min(1, "Indica tu serie UNSCH (Ej. Serie 100, 200...)"),
   whatsapp: z
     .string()
     .min(6, "Número de WhatsApp inválido")
@@ -21,7 +21,7 @@ type FormValues = z.infer<typeof schema>;
 const fields: Array<{ name: keyof FormValues; label: string; placeholder: string; type?: string }> = [
   { name: "nombre", label: "Nombre completo", placeholder: "Ej. María Quispe Huamán" },
   { name: "facultad", label: "Facultad / Escuela profesional", placeholder: "Ej. Ing. de Sistemas" },
-  { name: "ciclo", label: "Ciclo actual", placeholder: "Ej. V" },
+  { name: "serie", label: "Serie UNSCH", placeholder: "Ej. Serie 200" },
   { name: "whatsapp", label: "Número de WhatsApp", placeholder: "Ej. 966 123 456", type: "tel" },
 ];
 
@@ -54,8 +54,8 @@ export function CelulaForm() {
                 <td style="padding: 8px 0; color: #0f172a;">${values.facultad}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Ciclo actual:</td>
-                <td style="padding: 8px 0; color: #0f172a;">${values.ciclo}</td>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Serie UNSCH:</td>
+                <td style="padding: 8px 0; color: #0f172a;">${values.serie}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #64748b; font-weight: bold;">WhatsApp:</td>

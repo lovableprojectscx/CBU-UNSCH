@@ -46,7 +46,7 @@ const lineas = [
   {
     number: "03",
     title: "Servicio y Apoyo Estudiantil",
-    body: "Iniciativas de ayuda solidaria en la UNSCH, campañas de reciclaje y apoyo mutuo entre compañeros durante el ciclo universitario.",
+    body: "Iniciativas de ayuda solidaria en la UNSCH, campañas de reciclaje y apoyo mutuo entre compañeros durante su etapa universitaria.",
   },
 ];
 
@@ -54,7 +54,7 @@ const momentos = [
   {
     img: aperturaImg,
     title: "Apertura CBU-UNSCH",
-    caption: "Bienvenida a nuevos estudiantes al inicio del ciclo académico.",
+    caption: "Bienvenida a nuevos estudiantes al inicio del semestre académico.",
     tag: "Ceremonia",
     icon: Users,
     span: "md:col-span-7 md:row-span-2",
@@ -184,7 +184,7 @@ function VidaUniversitariaPage() {
 
           <Reveal delay={0.1}>
             <p className="mt-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:ml-[25%] md:text-lg">
-              Aperturas de ciclo, vigilias, dinámicas en la Plaza Mayor y retiros de integración.
+              Aperturas de semestre, vigilias, dinámicas en la Plaza Mayor y retiros de integración.
               Momentos que unen y fortalecen a cada grupo en la CBU-UNSCH.
             </p>
           </Reveal>

@@ -89,7 +89,7 @@ export function OracionForm() {
           Gracias por confiar. Vamos a <span className="italic text-primary">orar por ti</span>.
         </p>
         <p className="mt-4 font-sans text-sm leading-relaxed text-muted-foreground">
-          Tu pedido llegó a la Junta Directiva Local. En nuestras próximas vigilias y células lo llevaremos al Padre.
+          Tu petición ha sido recibida con total confidencialidad y respeto por nuestro equipo pastoral. Como comunidad CBU, estaremos intercediendo por ti en nuestros tiempos de oración.
         </p>
         <button
           type="button"

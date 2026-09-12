@@ -47,7 +47,8 @@ const postulaLourdesSchema = z.object({
   serie: z.string().min(1, "Selecciona tu nivel académico / Serie UNSCH"),
   codigo: z
     .string()
-    .regex(/^[0-9]{6}$/, "El código de estudiante UNSCH debe tener 6 dígitos")
+    .trim()
+    .regex(/^[0-9]{6,12}$/, "El código de estudiante debe tener entre 6 y 12 dígitos numéricos")
     .or(z.literal("")),
   turno: z.enum(["Grupo A", "Grupo B", "Flexible"], {
     errorMap: () => ({ message: "Selecciona tu turno de preferencia" }),
@@ -595,12 +596,12 @@ function VoluntariadoLourdesPage() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label className="label-eyebrow mb-1.5 block text-xs">
-                    7. Código de Estudiante UNSCH (6 dígitos)
+                    7. Código de Estudiante UNSCH
                   </label>
                   <input
                     {...register("codigo")}
-                    placeholder="Ej. 211910"
-                    maxLength={6}
+                    placeholder="Ej. 27220101"
+                    maxLength={12}
                     className="w-full rounded-xl border border-hairline bg-background px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none"
                   />
                   {errors.codigo && (

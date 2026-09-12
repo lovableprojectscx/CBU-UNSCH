@@ -63,7 +63,7 @@ export function SiteFooter() {
                   to="/oportunidades"
                   className="link-underline text-foreground/80 hover:text-foreground"
                 >
-                  Oportunidades & RSU
+                  Oportunidades & Servicio
                 </Link>
               </li>
               <li>

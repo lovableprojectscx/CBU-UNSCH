@@ -87,12 +87,12 @@ function OportunidadesPage() {
           items={[
             "Programas de Voluntariado 2026",
             "Aprendizaje-Servicio",
-            "Acción social en Ayacucho",
+            "Acción Social en Ayacucho",
             "Convocatorias Abiertas",
-            "I.E. Nuestra Señora de Lourdes",
-            "CBU UNSCH",
-            "Todas las Carreras",
-            "Horas RSU Acreditadas",
+            "Bolsa de Prácticas & Mentorías",
+            "Comunidad CBU UNSCH",
+            "Todas las Escuelas Profesionales",
+            "Constancia Institucional",
           ]}
         />
       </section>
@@ -318,7 +318,7 @@ function OportunidadesPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-hairline">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Investigación & RSU
+                    Investigación & Desarrollo Social
                   </span>
                 </div>
               </div>

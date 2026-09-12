@@ -31,6 +31,10 @@ test-results/
 playwright-report/
 coverage/
 
+# Documentation & Internal Reports
+docs/
+documentacion/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

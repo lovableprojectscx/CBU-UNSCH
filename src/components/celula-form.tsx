@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { sendEmail } from "@/lib/email";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const schema = z.object({
@@ -35,14 +35,43 @@ export function CelulaForm() {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (values: FormValues) => {
-    const { error } = await supabase.from("celula_registros").insert(values);
-    if (error) {
+    try {
+      await sendEmail({
+        subject: `[Inscripción Célula] - ${values.nombre} - ${values.facultad}`,
+        html: `
+          <div style="font-family: sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
+            <div style="border-bottom: 2px solid #800020; padding-bottom: 12px; margin-bottom: 20px;">
+              <h2 style="color: #800020; margin: 0; font-size: 20px;">Nuevo Registro de Célula Universitaria</h2>
+              <p style="margin: 4px 0 0; color: #64748b; font-size: 13px;">Comunidad Bíblica Universitaria — CBU UNSCH</p>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; width: 140px; font-weight: bold;">Estudiante:</td>
+                <td style="padding: 8px 0; color: #0f172a; font-weight: 600;">${values.nombre}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Facultad / Escuela:</td>
+                <td style="padding: 8px 0; color: #0f172a;">${values.facultad}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Ciclo actual:</td>
+                <td style="padding: 8px 0; color: #0f172a;">${values.ciclo}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">WhatsApp:</td>
+                <td style="padding: 8px 0; color: #0f172a;"><a href="https://wa.me/${values.whatsapp.replace(/[^0-9]/g, "")}" style="color: #800020; font-weight: bold;">${values.whatsapp}</a></td>
+              </tr>
+            </table>
+            <p style="font-size: 11px; color: #94a3b8; margin: 0; text-align: center;">Enviado desde el portal web cbuunsch.pe</p>
+          </div>
+        `,
+      });
+      toast.success("Registro enviado. Un coordinador te escribirá pronto.");
+      setSubmitted(true);
+      reset();
+    } catch {
       toast.error("No pudimos enviar tu registro. Intenta de nuevo.");
-      return;
     }
-    toast.success("Registro enviado. Un coordinador te escribirá pronto.");
-    setSubmitted(true);
-    reset();
   };
 
   if (submitted) {

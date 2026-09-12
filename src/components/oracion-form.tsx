@@ -3,10 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
-import { ArrowRight, HandHeart, CheckCircle2 } from "lucide-react";
-
 import { sendEmail } from "@/lib/email";
+import { ArrowRight, HandHeart, CheckCircle2 } from "lucide-react";
 
 const schema = z.object({
   nombre: z
@@ -71,15 +69,6 @@ export function OracionForm() {
           </div>
         `,
       });
-
-      try {
-        await supabase.from("oraciones").insert({
-          nombre: values.nombre?.trim() ? values.nombre.trim() : null,
-          categoria: values.categoria,
-          mensaje: values.mensaje.trim(),
-          permite_publicar: Boolean(values.permite_publicar),
-        });
-      } catch {}
 
       toast.success("Pedido recibido. La comunidad orará por ti.");
       setSubmitted(true);

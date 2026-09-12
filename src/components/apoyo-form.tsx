@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { sendEmail } from "@/lib/email";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const schema = z.object({
@@ -28,14 +28,51 @@ export function ApoyoForm() {
   });
 
   const onSubmit = async (values: FormValues) => {
-    const { error } = await supabase.from("apoyo_propuestas").insert(values);
-    if (error) {
+    try {
+      const rolLabels: Record<string, string> = {
+        iglesia_local: "Iglesia local",
+        profesional: "Profesional",
+        egresado: "Egresado CBU",
+        mentor: "Mentor / Asesor",
+      };
+      const rolTexto = rolLabels[values.rol] || values.rol;
+
+      await sendEmail({
+        subject: `[Propuesta de Apoyo / Alianza] - ${values.nombre} (${rolTexto})`,
+        html: `
+          <div style="font-family: sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
+            <div style="border-bottom: 2px solid #800020; padding-bottom: 12px; margin-bottom: 20px;">
+              <h2 style="color: #800020; margin: 0; font-size: 20px;">Nueva Propuesta de Apoyo y Alianza</h2>
+              <p style="margin: 4px 0 0; color: #64748b; font-size: 13px;">Comunidad Bíblica Universitaria — CBU UNSCH</p>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; width: 140px; font-weight: bold;">Nombre:</td>
+                <td style="padding: 8px 0; color: #0f172a; font-weight: 600;">${values.nombre}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Rol / Perfil:</td>
+                <td style="padding: 8px 0; color: #0f172a;"><span style="background: #f1f5f9; padding: 4px 10px; border-radius: 6px; font-weight: 600;">${rolTexto}</span></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #64748b; font-weight: bold;">Contacto:</td>
+                <td style="padding: 8px 0; color: #0f172a;">${values.contacto}</td>
+              </tr>
+            </table>
+            <div style="background: #f8fafc; border-left: 4px solid #800020; padding: 16px; border-radius: 4px; margin-bottom: 20px;">
+              <p style="margin: 0 0 6px; font-weight: bold; color: #334155;">Mensaje / Propuesta:</p>
+              <p style="margin: 0; color: #1e293b; white-space: pre-line;">${values.mensaje.trim()}</p>
+            </div>
+            <p style="font-size: 11px; color: #94a3b8; margin: 0; text-align: center;">Enviado desde el portal web cbuunsch.pe</p>
+          </div>
+        `,
+      });
+      toast.success("Propuesta enviada. Gracias por sumarte a la obra.");
+      setSubmitted(true);
+      reset();
+    } catch {
       toast.error("No pudimos enviar tu propuesta. Intenta de nuevo.");
-      return;
     }
-    toast.success("Propuesta enviada. Gracias por sumarte a la obra.");
-    setSubmitted(true);
-    reset();
   };
 
   if (submitted) {
